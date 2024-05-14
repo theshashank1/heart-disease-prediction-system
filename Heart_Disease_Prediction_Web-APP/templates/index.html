@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardio Care</title>
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            background-color: #ff6e40;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            color: white;
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff6e40;
+        }
+
+        .input-field label {
+            color: #ff6e40;
+        }
+
+        .input-field input[type=text]:focus + label,
+        .input-field input[type=email]:focus + label {
+            color: #ff6e40 !important;
+        }
+
+        #nextbtn {
+            background-color: #ff6e40;
+        }
+
+        #nextbtn:hover {
+            background-color: #ff7043;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="brand-logo">
+                            <i class="material-icons">favorite</i>
+                        </div>
+                        <span class="card-title center-align brand-title"><b>Cardio Care</b></span>
+                        <form action="/detail" method="POST">
+                            <div class="input-field">
+                                <input id="Username" type="text" class="validate" name="Username" required>
+                                <label for="Username">Name</label>
+                            </div>
+                            <div class="input-field">
+                                <input id="email" type="email" class="validate" name="email" required>
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="center-align">
+                                <button class="btn waves-effect waves-light" type="submit" name="action" id="nextbtn">Next
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href="https://github.com/">BY GROUP 303</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

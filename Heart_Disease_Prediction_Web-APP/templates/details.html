@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardio Care</title>
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            background-color: #ff6e40;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            color: white;
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff6e40;
+        }
+
+        .input-field label {
+            color: #ff6e40;
+        }
+
+        .input-field input[type=text]:focus + label,
+        .input-field input[type=email]:focus + label {
+            color: #ff6e40 !important;
+        }
+
+        #nextbtn {
+            background-color: #ff6e40;
+        }
+
+        #nextbtn:hover {
+            background-color: #ff7043;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="brand-logo">
+<!--                            <i class="material-icons">favorite</i>-->
+                            <span class="material-symbols-outlined">settings_heart</span>
+                        </div>
+                        <span class="card-title center-align brand-title"><b>Cardio Care</b></span>
+                        <span class="card-title center-align brand-title"><i>Hello, {{n}}</i></span>
+                        <br>
+                        <br>
+                        <form action="{{ url_for('predict') }}" method="POST">
+
+<!--                            AGE-->
+                            <div class="input-field">
+                                <input id="age" type="number" class="validate" name="age"  required>
+                                <label for="age">Age</label>
+                            </div>
+
+<!--                            SEX-->
+                            <div class="input-field">
+
+                                <label for="sex">Sex</label>
+                                <br>
+                                <br>
+                                <div style="text-align: center display: flex; justify-content: center;">
+                                    <label>
+                                        <input id="male" type="radio" class="validate" name="sex"  value="1">
+                                        <span>Male</span>
+                                    </label>
+                                    <br>
+                                    <label>
+                                        <input id="female" type="radio" class="validate" name="sex"  value="0">
+                                        <span>Female</span>
+                                    </label>
+                                </div>
+                            </div>
+<!--                            <br>-->
+
+<!--                        CHEST PAIN TYPE    -->
+
+                            <div class="input-field">
+                                <label for="cp">Chest Pain Type</label>
+                                <br>
+                                <br>
+                                <select name="cp" id="cp">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">Type-1</option>
+                                    <option value="1">Type-2</option>
+                                    <option value="2">Type-2</option>
+                                    <option value="3">Type-3</option>
+                                </select>
+                            </div>
+
+<!--                            TRESTBPS-->
+                            <br>
+                            <div class="input-field">
+                                <label for="trestbps">Blood Pressure</label>
+                                <input id="trestbps" name="trestbps"  type="number" required>
+                            </div>
+                            <br>
+
+                            <div class="input-field">
+                                <label for="chol">Cholestoral</label>
+                                <input type="number"  name="chol" id="chol" type="number" required>
+                            </div>
+
+<!--                            Fasting Blood Sugar-->
+
+                            <div class="input-field">
+
+                                <label for="fbs">Fasting Blood Sugar</label>
+                                <br>
+                                <br>
+                                <div style="text-align: center display: flex; justify-content: center;">
+                                    <label>
+                                        <input id="fbs" type="radio" class="validate" name="fbs"  value="1">
+                                        <span>Yes</span>
+                                    </label>
+                                    <br>
+                                    <label>
+                                        <input id="fbs" type="radio" class="validate" name="fbs"  value="0">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="input-field">
+                                <label for="restecg">Electrocardiographic</label>
+                                <br>
+                                <br>
+                                <select name="restecg" id="restecg" required>
+                                    <option disabled selected>Select</option>
+                                    <option value="0">Type-1</option>
+                                    <option value="1">Type-2</option>
+                                    <option value="2">Type-3</option>
+                                </select>
+
+                            </div>
+                            <br>
+
+<!--                            HEART RATE-->
+
+                            <div class="input-field">
+                                <label for="thalach">Heart Rate</label>
+                                <input type="number" name="thalach" id="thalach" required>
+                            </div>
+
+<!--                            Angina-->
+
+                            <div class="input-field">
+
+                                <label for="exang">Angina</label>
+                                <br>
+                                <br>
+                                <div style="text-align: center display: flex; justify-content: center;">
+                                    <label>
+                                        <input id="yes" type="radio" class="validate" name="exang"  value="1">
+                                        <span>yes</span>
+                                    </label>
+                                    <br>
+                                    <label>
+                                        <input id="No" type="radio" class="validate" name="exang"  value="0">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+<!--                        OLDPEAK    -->
+
+                            <div class="input-field">
+                                <label for="oldpeak">Oldpeak</label>
+                                <br>
+                                <br>
+                                <select name="oldpeak" id="oldpeak" required>
+                                    <option disabled selected>Select</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+
+                            </div>
+
+                            <div class="input-field">
+                                <label for="slope">Slope</label>
+                                <br>
+                                <br>
+                                <select name="slope" id="slope" required>
+                                    <option disabled selected>Select</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="input-field">
+                                <label for="ca">CA</label>
+                                <br>
+                                <br>
+                                <select name="ca" id="ca" required>
+                                    <option disabled selected>Select</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="2">3</option>
+                                </select>
+                            </div>
+
+<!--                            Thalassemia-->
+                            <div class="input-field">
+                                <label for="thal">Thalassemia</label>
+                                <br>
+                                <br>
+                                <select name="thal" id="thal" required>
+                                    <option disabled selected>Select</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="2">3</option>
+                                </select>
+                            </div>
+
+
+
+
+
+                            <!-- SUBMIT BUTTON-->
+                            <br>
+                            <div class="row">
+                                <div class="col s12">
+                                    <button class="btn waves-effect waves-light right-align" type="submit" name="action" id="nextbtn">Next
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
+
+<!--                            <div class="center-align">-->
+<!--                                <button class="btn waves-effect waves-light" type="submit" name="action" id="nextbtn">Next-->
+<!--                                    <i class="material-icons right">send</i>-->
+<!--                                </button>-->
+<!--                            </div>-->
+                        </form>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href="https://github.com/">BY GROUP 303</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+        });
+    </script>
+</body>
+</html>
