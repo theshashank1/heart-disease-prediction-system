@@ -15,7 +15,7 @@ model = joblib.load(fullpath)
 
 
 @app.route("/", )
-def hello() :
+def home() :
     return render_template("index.html")
 
 
