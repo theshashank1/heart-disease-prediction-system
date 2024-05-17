@@ -2,15 +2,15 @@
 from flask import Flask, render_template, request
 import numpy as np
 # import pickle
-# from pathlib import Path
+from pathlib import Path
 import joblib
 import os
+# import ngrok
 
 location = "E:\FinalProjects\pythonProject\Heart_Disease_Prediction_System\Heart_Disease_Prediction_Web-APP"
 fullpath = os.path.join(location, 'hdp_model.pkl')
 
 app = Flask(__name__)
-# model = pickle.load(open(fullpath, 'rb'))
 model = joblib.load(fullpath)
 
 
@@ -54,4 +54,7 @@ def predict() :
 
 
 if __name__ == "__main__" :
+    # listener = ngrok.forward(5000)
+    # print(f"Ingress established at {listener.url()}")
     app.run(debug=True)
+
