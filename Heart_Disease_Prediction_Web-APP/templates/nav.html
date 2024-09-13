@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Heart Disease Prediction System{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            background-color: #f5f5f5;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        nav {
+            background-color: #ff7043;
+        }
+        nav .brand-logo {
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        nav .brand-logo {
+            font-size: 1.5rem; /* Adjust font size as needed */
+        }
+        nav ul a {
+            display: flex;
+            align-items: center;
+            font-size: 1rem; /* Adjust font size as needed */
+        }
+        .page-footer {
+            background-color: #ff7043;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="{{ url_for('home') }}" class="brand-logo">
+                    Heart Prediction
+                </a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                    <li><a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidenav -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="{{ url_for('home') }}">
+            Home</a></li>
+        <li><a href="{{ url_for('dashboard') }}">
+            Dashboard</a></li>
+        <li><a href="{{ url_for('logout') }}">
+            Logout</a></li>
+    </ul>
+</header>
+
+<main>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Heart Disease Prediction System</h5>
+                <p class="grey-text text-lighten-4">Helping you stay heart-healthy.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2023 Heart Disease Prediction
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    });
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>
